@@ -3,6 +3,7 @@ package main
 import (
 	"github.com/gofiber/fiber/v2"
 	"github.com/gofiber/fiber/v2/middleware/cors"
+	"log"
 	"practicing-go/database"
 	"practicing-go/router"
 )
@@ -15,5 +16,5 @@ func main() {
 	database.ConnectDb()
 	router.SetupRoutes(app)
 
-	app.Listen(":3000")
+	log.Fatal(app.Listen(":3000"))
 }
