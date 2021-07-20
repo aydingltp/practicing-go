@@ -2,13 +2,18 @@ package controllers
 
 import (
 	"github.com/gofiber/fiber/v2"
-	"practicing-go/database"
+	"github.com/jinzhu/gorm"
 	"practicing-go/models"
 )
 
-var db = database.DB
+var db *gorm.DB
+
+func Context(dbgorm *gorm.DB) {
+	db = dbgorm
+}
 
 func GetUser(c *fiber.Ctx) error {
+
 	id := c.Params("id")
 	var user models.User
 	db.Find(&user, id)
